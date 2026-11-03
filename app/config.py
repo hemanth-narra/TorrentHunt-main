@@ -29,6 +29,9 @@ class Settings(BaseSettings):
     bot_admins: str = ""  # comma-separated user ids
     workdir: str = ""
 
+    # Seedr Integration
+    seedr_bot_username: str = "hemanthseedrobot"
+
     # Database
     database_url: str = "sqlite:///torrenthunt.db"
     torrent_cache_days: float = 90

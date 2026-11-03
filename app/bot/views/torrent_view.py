@@ -3,6 +3,7 @@
 from html import escape
 from typing import Any
 
+from config import settings
 from localization import Translator
 from telethon import Button
 
@@ -65,6 +66,7 @@ def render_torrent(
     )
 
     info_hash = data.get("info_hash") or data.get("infoHash") or data.get("hash") or ""
+    seedr_bot = (settings.seedr_bot_username or "hemanthseedrobot").lstrip("@")
 
     if bookmarked:
         bookmark_button = Button.inline(
@@ -80,8 +82,8 @@ def render_torrent(
     buttons = [
         [
             Button.url(
-                "🌱 Send to Seedr Bot",
-                f"https://t.me/torrentseedrbot?start=addTorrent_{info_hash}",
+                f"🌱 Send to @{seedr_bot}",
+                f"https://t.me/{seedr_bot}?start=addTorrent_{info_hash}",
             ),
         ],
         [bookmark_button],

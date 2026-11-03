@@ -1,7 +1,7 @@
 <h1 align="center">🔍 Torrent Hunt Bot (Personal Edition)</h1>
 
 <p align="center">
-A lightweight, fast, personal Telegram bot for searching torrents and getting <b>instant copyable magnet links</b> and <b>one-tap sending to Seedr</b>.
+A lightweight, fast, personal Telegram bot for searching torrents and getting <b>instant copyable magnet links</b> and <b>one-tap sending to your Seedr bot (@hemanthseedrobot)</b>.
 </p>
 
 ---
@@ -10,7 +10,7 @@ A lightweight, fast, personal Telegram bot for searching torrents and getting <b
 
 - **⚡ Instant In-Memory Pagination & Sorting**: Results are cached in memory per search session so paging (Next/Prev) and sorting (by seeds/size/date) are instant (< 50ms) without re-querying Jackett/Prowlarr.
 - **🧲 One-Tap Magnet Retrieval**: Quick-access buttons (`[ 🧲 #1 ]`, `[ 🧲 #2 ]`, ...) let you pull a magnet link directly without jumping between chats.
-- **🌱 Direct Seedr Integration**: Includes a direct **"🌱 Send to Seedr Bot"** button that forwards the hash directly to [@torrentseedrbot](https://t.me/torrentseedrbot).
+- **🌱 Direct Seedr Bot Integration**: Includes a direct **"🌱 Send to @hemanthseedrobot"** button that forwards the hash directly to your Seedr bot.
 - **📋 Tap-to-Copy Magnet**: Magnet links are rendered inside Telegram `<code>` blocks so tapping the text copies the full link to your clipboard.
 - **🧹 Multi-Tracker Deduplication**: Automatically deduplicates duplicate releases returned across multiple indexers, keeping the one with the highest seeds.
 - **🛡️ 64-Byte Safe**: Uses compact session IDs in callback data to prevent Telegram's 64-byte `BUTTON_DATA_INVALID` error on long queries or non-Latin languages.
@@ -45,6 +45,7 @@ Edit `.env` with your favorite editor (e.g., `nano .env`) and fill in:
 * `BOT_TOKEN`: Obtained from [@BotFather](https://t.me/BotFather)
 * `API_ID` & `API_HASH`: Obtained from [my.telegram.org](https://my.telegram.org)
 * `BOT_ADMINS`: Your numeric Telegram user ID (from [@userinfobot](https://t.me/userinfobot))
+* `SEEDR_BOT_USERNAME`: `hemanthseedrobot` (or your custom bot username)
 * `TORRENT_PROVIDER`: `jackett` or `prowlarr`
 * `JACKETT_URL` / `JACKETT_API_KEY` (or Prowlarr equivalents)
 
@@ -116,7 +117,7 @@ python app/main.py
    - Tap any `[ 🧲 #1 ]`, `[ 🧲 #2 ]` button below the results to receive the magnet link immediately.
    - Or tap the blue title link to view full details.
 3. **Send to Seedr**:
-   - Tap **"🌱 Send to Seedr Bot"** to start the torrent immediately in Seedr.
+   - Tap **"🌱 Send to @hemanthseedrobot"** to start the torrent immediately in your Seedr bot.
    - Or tap the `<code>magnet:...</code>` block to copy the magnet link and paste it into Seedr web / bot.
 4. **Inline Search**: In any Telegram chat or group, type:
    ```
@@ -138,6 +139,7 @@ python app/main.py
 | `API_ID` | Telegram API ID from my.telegram.org | **Required** |
 | `API_HASH` | Telegram API Hash from my.telegram.org | **Required** |
 | `BOT_ADMINS` | Comma-separated admin Telegram user IDs | `""` |
+| `SEEDR_BOT_USERNAME` | Username of your Seedr bot (without @) | `hemanthseedrobot` |
 | `WORKDIR` | Directory where session & SQLite database are saved | `/app/data` |
 | `DATABASE_URL` | SQLite / PostgreSQL database connection string | `sqlite:///torrenthunt.db` |
 | `TORRENT_PROVIDER` | Search provider backend (`jackett` or `prowlarr`) | `jackett` |
