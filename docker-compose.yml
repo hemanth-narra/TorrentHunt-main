@@ -1,0 +1,12 @@
+services:
+  torrenthunt:
+    build: .
+    container_name: torrenthunt
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - WORKDIR=/app/data
+    volumes:
+      - ./data:/app/data
+

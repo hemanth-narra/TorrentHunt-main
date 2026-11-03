@@ -1,0 +1,13 @@
+aiohttp>=3.10
+aiosqlite>=0.20
+asyncpg>=0.30
+greenlet>=3.1
+pydantic-settings>=2.5
+pyyaml>=6.0.2
+scikit-learn>=1.5
+sentry-sdk>=2.15
+sqlalchemy>=2.0.35
+structlog>=24.4
+telethon>=1.36
+uvloop>=0.21; sys_platform != 'win32'
+
